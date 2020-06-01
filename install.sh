@@ -4,7 +4,7 @@ set -e
 set -x
 
 BASEDIR=$(realpath "$(dirname "$0")")
-BASEDIR_DEPLOY_SCRIPTS="$BASEDIR/deploy"
+BASEDIR_DEPLOY_SCRIPTS="$BASEDIR/deploy-hooks"
 
 source "$BASEDIR/.env"
 
