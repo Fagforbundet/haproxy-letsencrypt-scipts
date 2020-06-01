@@ -15,8 +15,8 @@ chmod +x "$BASEDIR_DEPLOY_SCRIPTS/05-copy_certs_remote.sh"
 chmod +x "$BASEDIR_DEPLOY_SCRIPTS/10-reload_haproxy.sh"
 chmod +x "$BASEDIR_DEPLOY_SCRIPTS/15-reload_haproxy_remote.sh"
 
-rm -f "$DEPLOY_HOOK_PATH/00-all_deploy_scripts.sh"
-ln -s "$BASEDIR/deploy/00-all_deploy_scripts.sh" "$DEPLOY_HOOK_PATH/00-all_deploy_scripts.sh"
+# Removes broken links from the deploy hook path
+find "$DEPLOY_HOOK_PATH" -xtype l -delete
 
 cp -f "$BASEDIR/deploy/.env.example" "$DEPLOY_HOOK_PATH/.env"
 
