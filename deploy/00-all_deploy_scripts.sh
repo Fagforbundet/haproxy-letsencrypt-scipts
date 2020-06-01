@@ -3,10 +3,9 @@
 set -e
 
 BASEDIR_DEPLOY_SCRIPTS="$(dirname "$(readlink -f "$0")")"
+BASEDIR="$BASEDIR_DEPLOY_SCRIPTS/.."
 
-echo "$BASEDIR_DEPLOY_SCRIPTS"
-
-source "$BASEDIR_DEPLOY_SCRIPTS/.env"
+source "$BASEDIR/.env"
 
 "$BASEDIR_DEPLOY_SCRIPTS/01-copy_certs.sh"
 "$BASEDIR_DEPLOY_SCRIPTS/05-copy_certs_remote.sh"
