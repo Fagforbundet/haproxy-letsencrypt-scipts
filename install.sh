@@ -9,6 +9,7 @@ BASEDIR_DEPLOY_SCRIPTS="$BASEDIR/deploy-hooks"
 source "$BASEDIR/.env"
 
 # Ensure all scripts are executable
+chmod +x "$BASEDIR/manual-run.sh"
 chmod +x "$BASEDIR_DEPLOY_SCRIPTS/00-all_deploy_scripts.sh"
 chmod +x "$BASEDIR_DEPLOY_SCRIPTS/01-copy_certs.sh"
 chmod +x "$BASEDIR_DEPLOY_SCRIPTS/05-copy_certs_remote.sh"
