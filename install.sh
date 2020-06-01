@@ -3,8 +3,9 @@
 set -e
 set -x
 
-DIR=$(dirname $0)
-source $DIR/.env
+BASEDIR=$(realpath "$(dirname "$0")")
+
+source "$BASEDIR/.env"
 
 chmod +x $DIR/deploy/01-copy_certs.sh
 chmod +x $DIR/deploy/05-copy_certs_remote.sh

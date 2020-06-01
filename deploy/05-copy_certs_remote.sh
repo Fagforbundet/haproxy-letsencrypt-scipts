@@ -2,7 +2,9 @@
 
 set -e
 
-source $(dirname $0)/.env
+BASEDIR=$(dirname "$0")
+
+source "$BASEDIR/.env"
 
 DOMAIN=$(echo $RENEWED_DOMAINS | awk '{print $NF}')
 
