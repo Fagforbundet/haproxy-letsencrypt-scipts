@@ -18,6 +18,11 @@ chmod +x "$BASEDIR_DEPLOY_SCRIPTS/15-reload_haproxy_remote.sh"
 # Removes broken links from the deploy hook path
 find "$DEPLOY_HOOK_PATH" -xtype l -delete
 
-cp -f "$BASEDIR/deploy/.env.example" "$DEPLOY_HOOK_PATH/.env"
+# Symlinks the barrel script
+ln -fs "$BASEDIR_DEPLOY_SCRIPTS/00-all_deploy_scripts.sh" "$DEPLOY_HOOK_PATH/00-all_deploy_scripts.sh"
 
-nano -c "$DEPLOY_HOOK_PATH/.env"
+# Force clean .env file
+cp -f "$BASEDIR/.env.example" "$BASEDIR/.env"
+
+# Open nano to edit clean .env file
+nano -c "$BASEDIR/.env"
