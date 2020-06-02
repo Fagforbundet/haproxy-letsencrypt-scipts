@@ -16,7 +16,7 @@ else
   export RENEWED_DOMAIN="$1"
 fi
 
-export RENEWED_LINEAGE="$CERT_FOLDER_PATH/$RENEWED_DOMAIN"
+export RENEWED_LINEAGE="$LETS_ENCRYPT_CERT_FOLDER_PATH/$RENEWED_DOMAIN"
 
 if [ ! -d "$RENEWED_LINEAGE" ]; then
   echo "The folder ${RENEWED_LINEAGE} does not seem to exist"

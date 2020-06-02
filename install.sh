@@ -23,7 +23,7 @@ chmod +x "$BASEDIR_DEPLOY_SCRIPTS/10-reload_haproxy.sh"
 chmod +x "$BASEDIR_DEPLOY_SCRIPTS/15-reload_haproxy_remote.sh"
 
 # Removes broken links from the deploy hook path
-find "$DEPLOY_HOOK_PATH" -xtype l -delete
+find "$LETS_ENCRYPT_DEPLOY_HOOK_PATH" -xtype l -delete
 
 # Symlinks the barrel script
-ln -fs "$BASEDIR_DEPLOY_SCRIPTS/00-all_deploy_scripts.sh" "$DEPLOY_HOOK_PATH/00-all_deploy_scripts.sh"
+ln -fs "$BASEDIR_DEPLOY_SCRIPTS/00-all_deploy_scripts.sh" "$LETS_ENCRYPT_DEPLOY_HOOK_PATH/00-all_deploy_scripts.sh"
