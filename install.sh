@@ -6,6 +6,12 @@ set -x
 BASEDIR=$(realpath "$(dirname "$0")")
 BASEDIR_DEPLOY_SCRIPTS="$BASEDIR/deploy-hooks"
 
+# Force clean .env file
+cp -f "$BASEDIR/.env.example" "$BASEDIR/.env"
+
+# Open nano to edit clean .env file
+nano -c "$BASEDIR/.env"
+
 source "$BASEDIR/.env"
 
 # Ensure all scripts are executable
@@ -21,9 +27,3 @@ find "$DEPLOY_HOOK_PATH" -xtype l -delete
 
 # Symlinks the barrel script
 ln -fs "$BASEDIR_DEPLOY_SCRIPTS/00-all_deploy_scripts.sh" "$DEPLOY_HOOK_PATH/00-all_deploy_scripts.sh"
-
-# Force clean .env file
-cp -f "$BASEDIR/.env.example" "$BASEDIR/.env"
-
-# Open nano to edit clean .env file
-nano -c "$BASEDIR/.env"
