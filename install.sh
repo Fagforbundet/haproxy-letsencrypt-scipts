@@ -1,21 +1,29 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -e
 set -x
 
-DIR=$(dirname $0)
-source $DIR/.env
+BASEDIR=$(realpath "$(dirname "$0")")
+BASEDIR_DEPLOY_SCRIPTS="$BASEDIR/deploy-hooks"
 
-chmod +x $DIR/deploy/01-copy_certs.sh
-chmod +x $DIR/deploy/05-copy_certs_remote.sh
-chmod +x $DIR/deploy/10-reload_haproxy.sh
-chmod +x $DIR/deploy/15-reload_haproxy_remote.sh
+source "$BASEDIR/.env"
 
-ln -s $(realpath $DIR)/deploy/01-copy_certs.sh $DEPLOY_HOOK_PATH/01-copy_certs.sh
-ln -s $(realpath $DIR)/deploy/05-copy_certs_remote.sh $DEPLOY_HOOK_PATH/05-copy_certs_remote.sh
-ln -s $(realpath $DIR)/deploy/10-reload_haproxy.sh $DEPLOY_HOOK_PATH/10-reload_haproxy.sh
-ln -s $(realpath $DIR)/deploy/15-reload_haproxy_remote.sh $DEPLOY_HOOK_PATH/15-reload_haproxy_remote.sh
+# Ensure all scripts are executable
+chmod +x "$BASEDIR/manual-run.sh"
+chmod +x "$BASEDIR_DEPLOY_SCRIPTS/00-all_deploy_scripts.sh"
+chmod +x "$BASEDIR_DEPLOY_SCRIPTS/01-copy_certs.sh"
+chmod +x "$BASEDIR_DEPLOY_SCRIPTS/05-copy_certs_remote.sh"
+chmod +x "$BASEDIR_DEPLOY_SCRIPTS/10-reload_haproxy.sh"
+chmod +x "$BASEDIR_DEPLOY_SCRIPTS/15-reload_haproxy_remote.sh"
 
-cp $DIR/deploy/.env.example $DEPLOY_HOOK_PATH/.env
+# Removes broken links from the deploy hook path
+find "$DEPLOY_HOOK_PATH" -xtype l -delete
 
-nano -c $DEPLOY_HOOK_PATH/.env
+# Symlinks the barrel script
+ln -fs "$BASEDIR_DEPLOY_SCRIPTS/00-all_deploy_scripts.sh" "$DEPLOY_HOOK_PATH/00-all_deploy_scripts.sh"
+
+# Force clean .env file
+cp -f "$BASEDIR/.env.example" "$BASEDIR/.env"
+
+# Open nano to edit clean .env file
+nano -c "$BASEDIR/.env"
