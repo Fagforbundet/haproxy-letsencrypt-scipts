@@ -6,4 +6,4 @@ if [[ "$(basename -- "$0")" != "00-all_deploy_scripts.sh" ]]; then
   exit 1
 fi
 
-"$HAPROXY_RELOAD_COMMAND"
+eval "$HAPROXY_RELOAD_COMMAND"

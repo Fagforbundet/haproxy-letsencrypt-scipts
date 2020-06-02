@@ -7,4 +7,4 @@ if [[ "$(basename -- "$0")" != "00-all_deploy_scripts.sh" ]]; then
 fi
 
 # shellcheck disable=SC2029
-ssh "$HAPROXY_REMOTE_USER"@"$HAPROXY_REMOTE_IP" "$HAPROXY_RELOAD_COMMAND"
+ssh "$HAPROXY_REMOTE_USER"@"$HAPROXY_REMOTE_IP" 'eval "$HAPROXY_RELOAD_COMMAND"'
