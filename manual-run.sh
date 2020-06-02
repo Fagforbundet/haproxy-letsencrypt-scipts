@@ -13,7 +13,7 @@ if [[ -z "$1" ]]; then
   usage
   exit 1;
 else
-  RENEWED_DOMAIN="$1"
+  export RENEWED_DOMAIN="$1"
 fi
 
 export RENEWED_LINEAGE="$CERT_FOLDER_PATH/$RENEWED_DOMAIN"
