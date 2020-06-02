@@ -29,3 +29,6 @@ find "$LETS_ENCRYPT_DEPLOY_HOOK_PATH" -xtype l -delete
 
 # Symlinks the barrel script
 ln -fs "$BASEDIR_DEPLOY_SCRIPTS/00-all_deploy_scripts.sh" "$LETS_ENCRYPT_DEPLOY_HOOK_PATH/00-all_deploy_scripts.sh"
+
+# Register Buypass CA with certbot
+certbot register -m "$LETS_ENCRYPT_EMAIL" --agree-tos --server "$LETS_ENCRYPT_SERVER"
