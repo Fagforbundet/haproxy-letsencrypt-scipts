@@ -17,4 +17,4 @@ else
 fi
 
 
-certbot certonly --standalone -d "$DOMAIN" --non-interactive --agree-tos --email "$LETS_ENCRYPT_EMAIL" --server "$LETS_ENCRYPT_SERVER" --http-01-port=8888 --tls-sni-01-port=8889
+certbot certonly --config "$BASEDIR/certbot-config.ini" --standalone -d "$DOMAIN" --non-interactive --agree-tos --http-01-port=8888 --tls-sni-01-port=8889
