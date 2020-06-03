@@ -9,7 +9,7 @@ chmod +x install.sh
 
 ## Manual run
 ```shell script
-./manual-run.sh <domain name>
+./manual-run.sh [<domain name>] [-a] [-h]
 ```
 
 ## Get certificate
