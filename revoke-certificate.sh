@@ -17,4 +17,4 @@ else
 fi
 
 
-certbot revoke --cert-path "/etc/letsencrypt/live/$DOMAIN/cert.pem"
+certbot revoke --config "$BASEDIR/certbot-config.ini" --cert-path "/etc/letsencrypt/live/$DOMAIN/cert.pem"
