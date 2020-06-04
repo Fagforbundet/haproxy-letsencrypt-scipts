@@ -56,7 +56,7 @@ if [[ -z "$1" ]]; then
   printf "\n"
 
   while true; do
-    read -rp "Attempt to run manually for these domains? [Yy/Nn]" yn
+    read -rp "Attempt to run manually for these ${#RENEWED_DOMAINS[@]} domains? [Yy/Nn]" yn
     case $yn in
         [Yy]* ) break;;
         [Nn]* ) exit 0;;
