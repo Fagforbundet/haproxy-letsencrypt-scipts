@@ -48,7 +48,7 @@ fi
 if [[ -z "$1" ]]; then
   # shellcheck disable=SC2207
   # shellcheck disable=SC2190
-  RENEWED_DOMAINS=($(find "$LETS_ENCRYPT_CERT_FOLDER_PATH" -mindepth 1 -maxdepth 1 -type d -printf '%f\n'))
+  RENEWED_DOMAINS=($(find "$LETS_ENCRYPT_CERT_FOLDER_PATH" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort -t '\0' -n))
   for d in "${RENEWED_DOMAINS[@]}"; do
     printf "%s\n" "$d"
   done
