@@ -17,4 +17,4 @@ else
 fi
 
 
-certbot certonly --config "$BASEDIR/certbot-config.ini" --standalone -d "$DOMAIN" --non-interactive --agree-tos --http-01-port=8888 --tls-sni-01-port=8889
+certbot certonly --config "$BASEDIR/certbot-config.ini" --standalone -d "$DOMAIN" --non-interactive --agree-tos --http-01-port=8888
